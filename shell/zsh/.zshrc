@@ -18,3 +18,13 @@ source ~/.dotfiles/shell/zsh/alias.sh
 fpath=(/Users/chengche/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
+
+# Path configurations
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Load environment variables from .env file
+[[ -f ~/.config/cursor/.env ]] && source ~/.config/cursor/.env
+
+# fnm
+eval "$(fnm env --use-on-cd)"
