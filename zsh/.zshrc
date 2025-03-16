@@ -5,12 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# Load powerlevel10k theme
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+
+# Load custom aliases and functions
+source ~/.zsh/alias.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+
+# Docker CLI completions
 fpath=(/Users/chengche/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
-# End of Docker CLI completions
