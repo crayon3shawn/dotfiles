@@ -6,13 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load powerlevel10k theme
-source ~/dotfiles/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.dotfiles/shell/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # Load custom aliases and functions
-source ~/dotfiles/zsh/alias.sh
+source ~/.dotfiles/shell/zsh/alias.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.dotfiles/shell/zsh/.p10k.zsh ]] || source ~/.dotfiles/shell/zsh/.p10k.zsh
 
 # Docker CLI completions
 fpath=(/Users/chengche/.docker/completions $fpath)

@@ -16,8 +16,7 @@ term = xterm-256color
 quit-after-last-window-closed = true
 
 # 性能設定
-cursor-blink-interval = 750
-cursor-blink-mode = on
+# 移除了不支援的游標閃爍設定
 
 # 其他設定
 clipboard-read = allow
