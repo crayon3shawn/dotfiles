@@ -1,16 +1,21 @@
-#!/bin/zsh
-
 # System maintenance
-update(){
-  # echo 'gs221221' | sudo -S softwareupdate -i -a;
-  # mas upgrade;
-  brew update; brew upgrade; #brew cu --cleanup -a -y -f;
-  # conda update -n base conda --yes; conda update --all --yes;
+update() {
+    echo "🔄 更新 Homebrew..."
+    brew update
+    brew upgrade
+    echo "✅ 更新完成"
 }
 
-cleanup(){
-  brew cleanup;
-  conda clean --all --yes;
+cleanup() {
+    echo "🧹 清理 Homebrew..."
+    brew cleanup
+    
+    if command -v conda >/dev/null 2>&1; then
+        echo "🧹 清理 Conda..."
+        conda clean --all --yes
+    fi
+    
+    echo "✅ 清理完成"
 }
 
 # File operations
@@ -24,5 +29,9 @@ alias bundle="brew bundle dump --describe --force --file=Brewfile"
 
 # Man pages
 manpdf() {
-  man -t "$1" | open -f -a /System/Applications/Preview.app/
+    if [ -z "$1" ]; then
+        echo "使用方式: manpdf <command>"
+        return 1
+    fi
+    man -t "$1" | open -f -a /System/Applications/Preview.app/
 } 
