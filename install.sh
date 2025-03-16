@@ -56,6 +56,16 @@ check_and_install_homebrew() {
     fi
 }
 
+# 安裝 Brewfile 中的包
+install_brew_packages() {
+    if [[ -f "Brewfile" ]]; then
+        log_info "正在安裝 Brewfile 中的包..."
+        brew bundle install
+    else
+        log_warn "找不到 Brewfile，跳過安裝包"
+    fi
+}
+
 # 檢查並安裝 Ghostty
 check_and_install_ghostty() {
     if ! command -v ghostty >/dev/null 2>&1; then
@@ -124,6 +134,7 @@ main() {
     
     if [[ "$(uname)" == "Darwin" ]]; then
         check_and_install_homebrew
+        install_brew_packages
         check_and_install_ghostty
     fi
     
