@@ -54,6 +54,10 @@ venv/
 .env/
 .venv/
 
+# Raycast
+config/raycast/config.json
+config/raycast/extensions/
+
 # 其他
 .lesshst
 *.log

@@ -93,3 +93,22 @@ git submodule update --remote  # 更新 submodules
 ## 授權
 
 MIT License 
+
+## 配置說明
+
+### Raycast
+
+1. 安裝 Raycast：
+   ```bash
+   brew install --cask raycast
+   ```
+
+2. 配置文件位置：
+   - 主配置文件：`~/.config/raycast/config.json`
+   - 擴展配置：`~/.config/raycast/extensions/`
+
+3. 首次設定：
+   ```bash
+   cp config/raycast/config.example.json ~/.config/raycast/config.json
+   ```
+   然後編輯 `~/.config/raycast/config.json` 添加您的 token。 
