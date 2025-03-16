@@ -113,7 +113,7 @@ setup_submodules() {
 # 使用 stow 建立符號連結
 create_symlinks() {
     log_info "建立符號連結..."
-    local modules=(zsh git ssh shell ghostty)
+    local modules=(shell git config)
     
     for module in "${modules[@]}"; do
         if [[ -d "$module" ]]; then
