@@ -1,0 +1,25 @@
+# 基本設定
+font-family = MesloLGS Nerd Font Mono
+font-size = 14
+
+# 視窗設定
+background-opacity = 0.95
+window-padding-x = 8
+window-padding-y = 0,2
+macos-titlebar-style = tabs
+
+# 主題設定
+theme = light:rose-pine-dawn,dark:rose-pine
+
+# 終端機設定
+term = xterm-256color
+quit-after-last-window-closed = true
+
+# 性能設定
+cursor-blink-interval = 750
+cursor-blink-mode = on
+
+# 其他設定
+clipboard-read = allow
+clipboard-write = allow
+confirm-close-surface = false 

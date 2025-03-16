@@ -48,6 +48,22 @@ check_and_install_stow() {
     fi
 }
 
+# 檢查並安裝 Homebrew
+check_and_install_homebrew() {
+    if ! command -v brew >/dev/null 2>&1; then
+        log_info "正在安裝 Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+}
+
+# 檢查並安裝 Ghostty
+check_and_install_ghostty() {
+    if ! command -v ghostty >/dev/null 2>&1; then
+        log_info "正在安裝 Ghostty..."
+        brew install --cask ghostty
+    fi
+}
+
 # 備份現有的 dotfiles
 backup_dotfiles() {
     log_info "備份現有的 dotfiles..."
@@ -61,12 +77,14 @@ backup_dotfiles() {
         ~/.gitconfig
         ~/.ssh/config
         ~/.hushlogin
+        ~/.config/ghostty/config
     )
 
     for file in "${files[@]}"; do
         if [[ -f "$file" && ! -L "$file" ]]; then
             log_info "備份: $file"
-            cp -p "$file" "$backup_dir/"
+            mkdir -p "$(dirname "$backup_dir/$file")"
+            cp -p "$file" "$backup_dir/$file"
             rm "$file"
         elif [[ -L "$file" ]]; then
             log_warn "跳過符號連結: $file"
@@ -85,7 +103,7 @@ setup_submodules() {
 # 使用 stow 建立符號連結
 create_symlinks() {
     log_info "建立符號連結..."
-    local modules=(zsh git ssh shell)
+    local modules=(zsh git ssh shell ghostty)
     
     for module in "${modules[@]}"; do
         if [[ -d "$module" ]]; then
@@ -103,6 +121,11 @@ main() {
     cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
     
     log_info "開始安裝 dotfiles..."
+    
+    if [[ "$(uname)" == "Darwin" ]]; then
+        check_and_install_homebrew
+        check_and_install_ghostty
+    fi
     
     check_and_install_stow
     backup_dotfiles
