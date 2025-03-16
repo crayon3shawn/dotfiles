@@ -1,0 +1,8 @@
+[user]
+	name = 星辰代卸
+	email = crayon3shawn@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
