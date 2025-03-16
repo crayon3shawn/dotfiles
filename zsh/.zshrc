@@ -6,10 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load powerlevel10k theme
-source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/dotfiles/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # Load custom aliases and functions
-source ~/.zsh/alias.sh
+source ~/dotfiles/zsh/alias.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
